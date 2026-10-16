@@ -104,4 +104,12 @@ public class RaceDayModelTests
 
         Assert.Equal(10.5m, raceEvent.DistanceKm);
     }
+
+    [Fact]
+    public void NewEvent_ShouldHaveEmptyName()
+    {
+        var raceEvent = new Event();
+
+        Assert.Equal(string.Empty, raceEvent.EventName);
+    }
 }
