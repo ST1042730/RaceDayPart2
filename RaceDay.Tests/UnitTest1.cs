@@ -137,7 +137,22 @@ public class RaceDayModelTests
     public void NewEvent_ShouldHaveZeroDistance()
     {
         var raceEvent = new Event();
-
         Assert.Equal(0m, raceEvent.DistanceKm);
+    }
+
+    [Fact]
+    public void NewEvent_ShouldHaveCreationDate()
+    {
+        var beforeCreation = DateTime.UtcNow;
+
+        var raceEvent = new Event();
+
+        var afterCreation = DateTime.UtcNow;
+
+        Assert.InRange(
+            raceEvent.CreatedAt,
+            beforeCreation,
+            afterCreation
+        );
     }
 }
