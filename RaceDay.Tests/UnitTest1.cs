@@ -84,4 +84,12 @@ public class RaceDayModelTests
 
         Assert.Equal("Johannesburg 5K", raceEvent.EventName);
     }
+
+    [Fact]
+    public void NewEvent_ShouldDefaultToUpcoming()
+    {
+        var raceEvent = new Event();
+
+        Assert.Equal("Upcoming", raceEvent.Status);
+    }
 }
