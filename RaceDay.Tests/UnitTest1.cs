@@ -10,7 +10,6 @@ public class RaceDayModelTests
     public void NewUser_ShouldDefaultToParticipant()
     {
         var user = new User();
-
         Assert.Equal("Participant", user.Role);
     }
 
@@ -44,7 +43,6 @@ public class RaceDayModelTests
     public void NewUser_ShouldHaveEmptyPasswordHash()
     {
         var user = new User();
-
         Assert.Equal(string.Empty, user.PasswordHash);
     }
 
@@ -57,7 +55,6 @@ public class RaceDayModelTests
         };
 
         user.Email = "new@example.com";
-
         Assert.Equal("new@example.com", user.Email);
     }
 
@@ -70,7 +67,6 @@ public class RaceDayModelTests
         };
 
         user.LastName = "Johnson";
-
         Assert.Equal("Johnson", user.LastName);
     }
 
@@ -89,7 +85,6 @@ public class RaceDayModelTests
     public void NewEvent_ShouldDefaultToUpcoming()
     {
         var raceEvent = new Event();
-
         Assert.Equal("Upcoming", raceEvent.Status);
     }
 
@@ -109,7 +104,6 @@ public class RaceDayModelTests
     public void NewEvent_ShouldHaveEmptyName()
     {
         var raceEvent = new Event();
-
         Assert.Equal(string.Empty, raceEvent.EventName);
     }
 
@@ -123,5 +117,19 @@ public class RaceDayModelTests
         };
 
         Assert.Equal("Johannesburg", raceEvent.Location);
+    }
+
+    [Fact]
+    public void Event_ShouldStoreEventDate()
+    {
+        var eventDate = new DateTime(2026, 11, 21, 8, 0, 0);
+
+        var raceEvent = new Event
+        {
+            EventName = "Johannesburg 5K",
+            EventDate = eventDate
+        };
+
+        Assert.Equal(eventDate, raceEvent.EventDate);
     }
 }
