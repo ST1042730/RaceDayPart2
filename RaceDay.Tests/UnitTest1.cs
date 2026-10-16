@@ -73,4 +73,15 @@ public class RaceDayModelTests
 
         Assert.Equal("Johnson", user.LastName);
     }
+
+    [Fact]
+    public void Event_ShouldStoreEventName()
+    {
+        var raceEvent = new Event
+        {
+            EventName = "Johannesburg 5K"
+        };
+
+        Assert.Equal("Johannesburg 5K", raceEvent.EventName);
+    }
 }
