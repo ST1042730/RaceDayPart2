@@ -132,4 +132,12 @@ public class RaceDayModelTests
 
         Assert.Equal(eventDate, raceEvent.EventDate);
     }
+
+    [Fact]
+    public void NewEvent_ShouldHaveZeroDistance()
+    {
+        var raceEvent = new Event();
+
+        Assert.Equal(0m, raceEvent.DistanceKm);
+    }
 }
