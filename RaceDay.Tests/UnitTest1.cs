@@ -112,4 +112,16 @@ public class RaceDayModelTests
 
         Assert.Equal(string.Empty, raceEvent.EventName);
     }
+
+    [Fact]
+    public void Event_ShouldStoreLocation()
+    {
+        var raceEvent = new Event
+        {
+            EventName = "Johannesburg Marathon",
+            Location = "Johannesburg"
+        };
+
+        Assert.Equal("Johannesburg", raceEvent.Location);
+    }
 }
