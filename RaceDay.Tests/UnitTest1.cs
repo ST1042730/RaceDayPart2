@@ -31,10 +31,7 @@ public class RaceDayModelTests
     [Fact]
     public void User_ShouldAllowOrganiserRole()
     {
-        var user = new User
-        {
-            Role = "Organiser"
-        };
+        var user = new User { Role = "Organiser" };
 
         Assert.Equal("Organiser", user.Role);
     }
@@ -49,24 +46,20 @@ public class RaceDayModelTests
     [Fact]
     public void User_Email_CanBeUpdated()
     {
-        var user = new User
-        {
-            Email = "old@example.com"
-        };
+        var user = new User { Email = "old@example.com" };
 
         user.Email = "new@example.com";
+
         Assert.Equal("new@example.com", user.Email);
     }
 
     [Fact]
     public void User_LastName_CanBeUpdated()
     {
-        var user = new User
-        {
-            LastName = "Smith"
-        };
+        var user = new User { LastName = "Smith" };
 
         user.LastName = "Johnson";
+
         Assert.Equal("Johnson", user.LastName);
     }
 
@@ -85,6 +78,7 @@ public class RaceDayModelTests
     public void NewEvent_ShouldDefaultToUpcoming()
     {
         var raceEvent = new Event();
+
         Assert.Equal("Upcoming", raceEvent.Status);
     }
 
@@ -104,6 +98,7 @@ public class RaceDayModelTests
     public void NewEvent_ShouldHaveEmptyName()
     {
         var raceEvent = new Event();
+
         Assert.Equal(string.Empty, raceEvent.EventName);
     }
 
@@ -137,6 +132,7 @@ public class RaceDayModelTests
     public void NewEvent_ShouldHaveZeroDistance()
     {
         var raceEvent = new Event();
+
         Assert.Equal(0m, raceEvent.DistanceKm);
     }
 
@@ -144,9 +140,7 @@ public class RaceDayModelTests
     public void NewEvent_ShouldHaveCreationDate()
     {
         var beforeCreation = DateTime.UtcNow;
-
         var raceEvent = new Event();
-
         var afterCreation = DateTime.UtcNow;
 
         Assert.InRange(
@@ -154,5 +148,18 @@ public class RaceDayModelTests
             beforeCreation,
             afterCreation
         );
+    }
+
+    [Fact]
+    public void Event_Status_CanBeChangedToCompleted()
+    {
+        var raceEvent = new Event
+        {
+            EventName = "Johannesburg 5K"
+        };
+
+        raceEvent.Status = "Completed";
+
+        Assert.Equal("Completed", raceEvent.Status);
     }
 }
