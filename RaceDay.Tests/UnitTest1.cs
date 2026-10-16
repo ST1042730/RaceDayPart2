@@ -60,4 +60,17 @@ public class RaceDayModelTests
 
         Assert.Equal("new@example.com", user.Email);
     }
+
+    [Fact]
+    public void User_LastName_CanBeUpdated()
+    {
+        var user = new User
+        {
+            LastName = "Smith"
+        };
+
+        user.LastName = "Johnson";
+
+        Assert.Equal("Johnson", user.LastName);
+    }
 }
