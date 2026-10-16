@@ -1,0 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+namespace RaceDay.API.DTOs;
+public record RegisterRequest([Required] string FirstName,[Required] string LastName,[Required,EmailAddress] string Email,[Required,MinLength(8)] string Password);
+public record LoginRequest([Required,EmailAddress] string Email,[Required] string Password);
+public record ProfileUpdateRequest([Required] string FirstName,[Required] string LastName);
+public record EventRequest([Required] string EventName,string Description,DateTime EventDate,[Required] string Location,decimal DistanceKm,[Required] string EventType,string Status="Upcoming");
+public record CategoryRequest([Required] string CategoryName,string Description);
+public record EventCategoryRequest(int EventId,int CategoryId,decimal EntryFee,int MaximumParticipants);
+public record EnrolRequest(int EventCategoryId);
+public record ResultRequest(int EnrolmentId,TimeSpan FinishTime,int Position,string ResultStatus="Completed");

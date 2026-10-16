@@ -1,0 +1,25 @@
+
+# Build output
+**/bin/
+**/obj/
+
+# Visual Studio and VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Local configuration and secrets
+**/appsettings.Development.json
+**/secrets.json
+.env
+.env.*
+
+# Local databases
+*.db
+*.mdf
+*.ldf
+
+# Test results
+TestResults/
+**/TestResults/
