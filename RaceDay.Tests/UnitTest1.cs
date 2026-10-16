@@ -47,4 +47,17 @@ public class RaceDayModelTests
 
         Assert.Equal(string.Empty, user.PasswordHash);
     }
+
+    [Fact]
+    public void User_Email_CanBeUpdated()
+    {
+        var user = new User
+        {
+            Email = "old@example.com"
+        };
+
+        user.Email = "new@example.com";
+
+        Assert.Equal("new@example.com", user.Email);
+    }
 }
