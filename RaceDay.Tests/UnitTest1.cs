@@ -92,4 +92,16 @@ public class RaceDayModelTests
 
         Assert.Equal("Upcoming", raceEvent.Status);
     }
+
+    [Fact]
+    public void Event_ShouldStoreDistanceInKilometres()
+    {
+        var raceEvent = new Event
+        {
+            EventName = "Johannesburg 10K",
+            DistanceKm = 10.5m
+        };
+
+        Assert.Equal(10.5m, raceEvent.DistanceKm);
+    }
 }
