@@ -1,0 +1,120 @@
+
+@model List<RaceDay.MVC.Models.CategoryViewModel>
+
+@{
+    ViewData["Title"] = "Manage Categories";
+}
+
+<div class="container mt-4 mb-5">
+    <h1>Manage Categories</h1>
+    <p class="text-muted">Create race categories and assign them to events.</p>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-4">
+                <h4>Create Category</h4>
+
+                <form asp-action="CreateCategory" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label class="form-label">Category Name</label>
+                        <input name="CategoryName" class="form-control"
+                               placeholder="Example: 5KM Open Race" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="Description" class="form-control"
+                                  rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Create Category
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow-sm p-4">
+                <h4>Available Categories</h4>
+
+                @if (Model.Count == 0)
+                {
+                    <p class="text-muted">No categories available yet.</p>
+                }
+                else
+                {
+                    <ul class="list-group">
+                        @foreach (var category in Model)
+                        {
+                            <li class="list-group-item">
+                                <strong>@category.CategoryName</strong>
+                                <br />
+                                <small class="text-muted">
+                                    @category.Description
+                                </small>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm p-4 mt-3">
+        <h4>Assign Category to Event</h4>
+
+        <form asp-action="AssignCategory" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label class="form-label">Event ID</label>
+                <input type="number" name="EventId"
+                       class="form-control" min="1" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Category ID</label>
+                <input type="number" name="CategoryId"
+                       class="form-control" min="1" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Entry Fee (R)</label>
+                <input type="number" name="EntryFee"
+                       class="form-control" min="0" step="0.01" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Maximum Participants</label>
+                <input type="number" name="MaximumParticipants"
+                       class="form-control" min="1" required />
+            </div>
+
+            <button type="submit" class="btn btn-success">
+                Assign Category
+            </button>
+        </form>
+    </div>
+
+    <a asp-action="Index" class="btn btn-outline-secondary mt-4">
+        Back to Dashboard
+    </a>
+</div>

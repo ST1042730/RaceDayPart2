@@ -1,0 +1,50 @@
+
+@{
+    ViewData["Title"] = "Organiser Dashboard";
+}
+
+<div class="container mt-4 mb-5">
+    <h1>Organiser Dashboard</h1>
+    <p class="text-muted">Welcome to RaceDay event management.</p>
+
+    <div class="row mt-4">
+
+        <div class="col-md-4 mb-3">
+            <div class="card p-4 shadow h-100">
+                <h4>Manage Events</h4>
+                <p>Create, edit and delete your races.</p>
+                <a asp-controller="Organiser"
+                   asp-action="Events"
+                   class="btn btn-primary">
+                    View Events
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card p-4 shadow h-100">
+                <h4>Categories</h4>
+                <p>Create race categories and assign them to events.</p>
+                <a asp-controller="Organiser"
+                   asp-action="Categories"
+                   class="btn btn-primary">
+                    Manage Categories
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <div class="card p-4 shadow h-100">
+                <h4>Enrolments</h4>
+                <p>View participants enrolled in your races.</p>
+                <a asp-controller="Organiser"
+                   asp-action="Enrolments"
+                   class="btn btn-primary">
+                    View Enrolments
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
